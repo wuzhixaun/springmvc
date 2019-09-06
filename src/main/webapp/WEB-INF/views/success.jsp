@@ -7,6 +7,8 @@
 --%>
 <%@page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>111</title>
@@ -14,14 +16,7 @@
 
 </head>
 <body>
-<h1>Hellow</h1>
-
-<h1>${requestScope.username}</h1>
-<h1>${date}</h1>
-
-session user:<h1>${sessionScope.user}</h1>
-session helloword:<h1>${sessionScope.helloword}</h1>
-request user:<h1>${requestScope.user}</h1>
-request helloword:<h1>${requestScope.helloword}</h1>
+<fmt:message key="i18n.username" ></fmt:message>
+<fmt:message key="i18n.password" ></fmt:message>
 </body>
 </html>
