@@ -1,4 +1,14 @@
 <html>
+
+
+<head>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            alert("hello")
+        })
+    </script>
+</head>
 <body>
 <h2 ><a href="helloworld"> Hello World!111</a></h2>
 
@@ -34,6 +44,12 @@
 <br>
 
 <h2 ><a href="testView"> testView</a></h2>
+<br>
+
+<h2 ><a href="testRedirect"> testRedirect</a></h2>
+<br>
+
+<h2 ><a href="user"> adduser</a></h2>
 <br>
 
 

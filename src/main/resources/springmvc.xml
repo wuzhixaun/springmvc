@@ -6,16 +6,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 配置自动扫描的包-->
-    <context:component-scan base-package="com.wuzx.controller"/>
+    <context:component-scan base-package="com.wuzx.*"/>
 
     <!--配置视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="prefix" value="/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
     <!--配置Be视图解析器,使用视图名字来解析视图-->
-    <bean  class="org.springframework.web.servlet.view.BeanNameViewResolver">
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
         <property name="order" value="100"/>
     </bean>
 
@@ -27,5 +27,31 @@
     <!--直接配置准发页面-->
     <mvc:view-controller path="/ssss" view-name="ssss"/>
 
-    <mvc:annotation-driven/>
+    <!--    <mvc:annotation-driven/>-->
+
+    <!-- 配置其他的Servlet来处理hander之外的请求-->
+    <mvc:default-servlet-handler/>
+
+
+    <mvc:annotation-driven conversion-service="conversionService"/>
+    <!-- 配置自定义ConversionService-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <ref bean="dateConverter"></ref>
+            </set>
+        </property>
+    </bean>
+
+    <!-- 配置文件上传Resolve-->
+    <!-- spring上下文没有注入这个类-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="1024000"/>
+    </bean>
+
+    <!--配置自定义拦截器-->
+    <mvc:interceptors>
+        <bean class="com.wuzx.interceptor.FirstInterceptor"/>
+    </mvc:interceptors>
 </beans>

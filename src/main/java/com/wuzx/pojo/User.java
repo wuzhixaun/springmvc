@@ -2,6 +2,8 @@ package com.wuzx.pojo;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @program: springmvc->User
  * @description:
@@ -16,5 +18,7 @@ public class User {
     private Integer age;
 
     private Address address;
+
+    private Date birth;
 
 }
